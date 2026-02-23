@@ -9,10 +9,10 @@ a sua melhor velocidade e em qual palavra vc foi melhor
 -JAVASCRIPT
 
 ## Como executar
-<ul>
+<ol>
     <li>Clone o repositorio</li>
     <li>Abra o arquivo "index.html" no seu navegador</li>
-</ul>
+</ol>
 
 ## Status
 Em desenvolvimento
