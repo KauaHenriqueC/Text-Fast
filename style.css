@@ -1,0 +1,75 @@
+html, body {                /*Configurações gerais*/
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+body {                      /*Configurações gerais do body, deixei o conteudo todo no centro*/
+    display: flex;
+    justify-content: center;
+}
+/*Cabeça ======================================================================*/
+.tudo .cabeca {             /*Deixa um em cima do outro*/
+    display: flex;
+    flex-direction: column;   
+}
+
+.tudo .cabeca h1 {          /*Configurando tamanho, margens e etc*/
+    margin: 0.2em;
+    font-size: 4.5rem;
+    padding: 0.01em;
+    
+}
+.tudo .cabeca .by {         /*Alinhando o P com o titulo*/
+    display: flex;
+    justify-content: center;
+    margin: 0;
+    padding: 0.01em
+}
+/*Tronco ======================================================================*/
+.tronco {                   /*Centralizando o tronco, colocando distancia entre ele e o titulo*/
+    padding-top: 2em;
+    display: flex;
+    flex-direction: column;
+}
+.tronco .world {            /*Alinhar*/
+    display: flex;
+    justify-content: center;
+}
+.tronco .caixa {            /*Alinhar*/
+    display: flex;
+    justify-content: center;
+}
+.tronco .estatisticas {     /*Alinhar*/
+    display: flex;
+    justify-content: center;
+}
+.tronco .estatisticas p {   /*Organizando as estatisticas de round e speed*/
+    padding: 0.1em 0.5em 0.1em 0.5em;
+}
+/*pes =========================================================================*/
+.pes {
+    display: flex;
+    flex-direction: column;
+}
+.pes .scr {
+    display: flex;
+    justify-content: center;
+}
+.pes .scr h3 {
+    font-size: 1.5rem;
+}
+.pes .tabela {
+    display: flex;
+    justify-content: center;
+}
+.pes .tabela table {
+    background-color: whitesmoke;
+    table-layout: auto;
+    width: 100%;
+    border: 0.5px solid black;
+}
+.pes .tabela td {
+    text-align: center;
+    border: 0.2px solid black;
+}
