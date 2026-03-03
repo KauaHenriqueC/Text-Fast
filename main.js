@@ -1,17 +1,67 @@
-// Variaveisss =================================================================
-const palavras = ["casa", "carro", "porta", "janela", "mesa", "cadeira", "computador", "teclado", "mouse", "monitor", "celular", "livro", "caderno", "caneta", "lapis", "borracha", "mochila", "escola", "igreja", "praia", "campo", "cidade", "bairro", "rua", "avenida", "estrada", "ponte", "rio", "lago", "mar", "ceu", "terra", "fogo", "vento", "chuva", "nuvem", "sol", "lua", "estrela", "tempo", "dia", "noite", "manha", "tarde", "amigo", "familia", "irmao", "irma", "pai", "mae", "tio", "tia", "avo", "prima", "primo", "filho", "filha", "homem", "mulher", "crianca", "adolescente", "adulto", "idoso", "professor", "aluno", "medico", "enfermeiro", "policial", "bombeiro", "jogador", "artista", "cantor", "ator", "engenheiro", "programador", "cientista", "soldado", "rei", "rainha", "heroi", "vilao", "animal", "cachorro", "gato", "passaro", "peixe", "cavalo", "leao", "tigre", "urso", "cobra", "flor", "arvore", "folha", "fruta", "legume"]; 
+// Lista de palavras
+const palavras = ["casa", "carro", "porta", "janela", "mesa", "cadeira", "computador", "teclado", "mouse", "monitor"];
 
-let word = document.getElementById("palavra");      // O elemento P
-let text = document.getElementById("formulario");   // O elemento Form
-let textinput = document.querySelector("input");    // O elemento Input
+// Elementos
+let word = document.getElementById("palavra");
+let form = document.getElementById("formulario");
+let textinput = document.querySelector("input");
 
+// Controle do jogo
+let round = 1;
+let maxRounds = 5;
+let startTime;
+let resultados = [];
 
-text.addEventListener("submit", (event) => {        // Quando o formulario é enviado ele ativa essa funcão
-    event.preventDefault();                         // Evita que a Pagina recarregue
+// Função gerar palavra
+function gerarPalavra() {
+    let randomindex = Math.floor(Math.random() * palavras.length);
+    return palavras[randomindex];
+}
 
-    let randomindex = Math.floor(Math.random() * palavras.length); // O Math.random gera um numero de 0 a 1, mas nunca chega a 1. ai o palavras.leght pega o tamanho da lista, ou seja, 100, isso faz com que na multiplicacao ele multiplique por 100, ou seja, ao inves de ser 0.23 é 23.8. ai dps disso o Math.floor arredonda pra baixo ou seja 23
-    let randomword = palavras[randomindex];
+// Palavra inicial
+let randomword = gerarPalavra();
+word.textContent = randomword;
 
+// Começa cronômetro
+startTime = Date.now();
+
+form.addEventListener("submit", (event) => {
+    event.preventDefault();
+
+    if (round > maxRounds) return;
+
+    let textvalue = textinput.value;
+    let endTime = Date.now();
+    let tempo = ((endTime - startTime) / 1000).toFixed(2); // segundos
+
+    let acertou = textvalue === randomword;
+
+    resultados.push({
+        palavra: randomword,
+        digitado: textvalue,
+        tempo: tempo,
+        acertou: acertou
+    });
+
+    if (acertou) {
+        console.log("Resposta Certa");
+    } else {
+        console.log("Resposta Errada");
+    }
+
+    round++;
+
+    if (round > maxRounds) {
+        console.log("Jogo acabou!");
+        console.log(resultados);
+        word.textContent = "Fim do jogo";
+        return;
+    }
+
+    // Nova palavra
+    randomword = gerarPalavra();
     word.textContent = randomword;
-    textinput.value = '';
+
+    textinput.value = "";
+    startTime = Date.now(); // reinicia cronômetro
 });

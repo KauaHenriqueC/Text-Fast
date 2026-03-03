@@ -14,5 +14,8 @@ a sua melhor velocidade e em qual palavra vc foi melhor
     <li>Abra o arquivo "index.html" no seu navegador</li>
 </ol>
 
+## Como jogar
+Digite a palavra que aparece a cima o mais rapido possivel durante 5 rounds
+
 ## Status
-Em desenvolvimento
+Finalizado
